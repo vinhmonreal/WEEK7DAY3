@@ -39,7 +39,7 @@ function createTodo() {
     todoDescription.innerHTML = description;
     todoDate.innerHTML = date;
     todoTime.innerHTML = time;
-    todoDelete.setAttribute('onclick', 'this.parentNode.remove()');
+    todoDelete.setAttribute('onclick', '(this.parentNode.remove())');
     todoDelete.innerHTML = 'Done';
     todoDelete.style.backgroundColor = '#a6baef';
     todoDelete.style.borderRadius = '5px';
@@ -52,11 +52,16 @@ function createTodo() {
     todo.appendChild(todoTime);
     todo.appendChild(todoDelete);
     box.appendChild(todo);
+    todo.addEventListener('click', (e) => {
+        e.preventDefault();
+        todo.remove();
+    })
     }
     document.querySelector('#todo-title').value = '';
     document.querySelector('#todo-des').value = '';
     document.querySelector('#todo-date').value = '';
     document.querySelector('#todo-time').value = '';
+
 }
 
 
